@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'litrevu',
     'user',
-    'review'
+    'review',
+    'authentication',
 ]
 
 MIDDLEWARE = [

@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import authentication.views
 import litrevu.views
 
 urlpatterns = [
+    path("", litrevu.views.home, name="home"),
     path('admin/', admin.site.urls),
-    path("", litrevu.views.home, name="home")
+    path("signin/", authentication.views.SigninView.as_view(), name="signin"),
+    path("signup/", authentication.views.render_signup_page, name="signup"),
+    path("signout/", authentication.views.signout_user, name="signout"),
 ]
