@@ -2,15 +2,18 @@
 
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+
+    <!-- import css refering to the page name with |add:page_css -->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'litrevu/css/styles.css' %}"
+      href="{% static 'css/'|add:page_css %}"
     />
+
     <title>Litrevu</title>
   </head>
   <body>
-    <h1>Litrevu</h1>
     {% block content %}{% endblock content %}
   </body>
 </html>

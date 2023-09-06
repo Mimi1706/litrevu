@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<p>Voici la page d'accueil</p>
+<h1>Litrevu</h1>
 {%  if user.is_authenticated %}
 <p>
   Vous êtes connecté en tant que {{ request.user }}.
@@ -7,9 +7,18 @@
 </p>
 {% endif %} {%  if not user.is_authenticated %}
 
-<div class="authentication-buttons">
-  <a>Connectez-vous</a>
-  <a>Inscrivez-vous</a>
+<div class="authentication">
+  <div class="authentication-signUp">
+    <h2>Inscrivez-vous maintenant</h2>
+    <a>S'inscrire</a>
+  </div>
+
+  <div class="authentication-signIn">
+    <h2>Connectez-vous</h2>
+    <input placeholder="Nom d'utilisateur" />
+    <input placeholder="Mot de passe" />
+    <a>Se connecter</a>
+  </div>
 </div>
 
 {% endif %} {% endblock content %}

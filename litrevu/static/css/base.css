@@ -1,0 +1,21 @@
+html {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8em;
+  font-family: avenir;
+}
+
+body {
+  max-width: 60em;
+  width: 100%;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 1em;
+  padding: 5em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

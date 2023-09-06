@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "litrevu",
-    "user",
-    "review"
+    'litrevu',
+    'user',
+    'review'
 ]
 
 MIDDLEWARE = [
