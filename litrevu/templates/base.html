@@ -1,0 +1,16 @@
+{% load static %}
+
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'litrevu/css/styles.css' %}"
+    />
+    <title>Litrevu</title>
+  </head>
+  <body>
+    <h1>Litrevu</h1>
+    {% block content %}{% endblock content %}
+  </body>
+</html>

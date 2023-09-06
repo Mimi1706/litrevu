@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<p>Voici la page d'accueil</p>
+{%  if user.is_authenticated %}
+<p>
+  Vous êtes connecté en tant que {{ request.user }}.
+  <a href="{% url 'logout' %}">Se déconnecter</a>
+</p>
+{% endif %} {%  if not user.is_authenticated %}
+
+<div class="authentication-buttons">
+  <a>Connectez-vous</a>
+  <a>Inscrivez-vous</a>
+</div>
+
+{% endif %} {% endblock content %}
