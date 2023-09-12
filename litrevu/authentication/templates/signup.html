@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Inscription</h2>
+<div class="go-back-div">
+  <a href="{% url 'home' %}">Go back</a>
+</div>
+<h1>Inscription</h1>
 {% if form.errors %} {{ form.errors }} {% endif %}
 <form method="post">
   {{ form.as_p }} {% csrf_token %}

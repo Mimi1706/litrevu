@@ -1,4 +1,17 @@
-.signup-button {
+.go-back-div {
+  width: 100%;
+  display: flex;
+}
+
+.go-back-div a {
+  color: black;
+}
+
+.go-back-div a:hover {
+  color: grey;
+}
+
+button {
   min-width: 7em;
   padding: 1em;
   background-color: white;
