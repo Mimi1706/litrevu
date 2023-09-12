@@ -7,48 +7,46 @@ h2 {
   font-size: 1.3em;
 }
 
-.authentication {
+.authentication-section {
   display: flex;
   justify-content: space-around;
   width: 100%;
   flex-wrap: wrap;
 }
 
-.authentication-signUp {
+.authentication-signup {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2em;
 }
 
-.authentication-signIn {
+.authentication-signin {
+  text-align: center;
+}
+
+.signin-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+label {
+  margin-top: 1em;
 }
 
 input {
   padding: 0.5em;
-  margin: 0.5em 0;
 }
 
-.authentication a {
-  width: 7em;
-  padding: 0.5em;
-  background-color: white;
-  border: solid 1px black;
-  margin: 1em;
-  text-decoration: none;
-  color: black;
-  border-radius: 1em;
-  text-align: center;
+.error-message {
+  color: red;
 }
 
 .auth-button {
-  min-width: 7em;
-  padding: 1em;
+  padding: 0.5em 2em;
   background-color: white;
   border: solid 1px black;
-  margin: 1em;
+  margin-top: 2em;
   text-decoration: none;
   color: black;
   border-radius: 1em;

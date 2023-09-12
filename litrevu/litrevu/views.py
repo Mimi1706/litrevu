@@ -3,7 +3,5 @@ from authentication.models import SigninForm
 
 
 def home(request):
-    # replace css file pathname
-    form = SigninForm()
-    context = {'page_css': 'home.css', "form": form}
-    return render(request, "home.html", context)
+    signin_form = SigninForm()
+    return render(request, "home.html", context={'page_css': 'home.css', "signin_form": signin_form})

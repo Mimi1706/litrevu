@@ -3,7 +3,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8em;
+  margin: 2em 0;
   font-family: avenir;
 }
 

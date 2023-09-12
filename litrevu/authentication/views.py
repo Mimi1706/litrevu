@@ -6,30 +6,23 @@ from django.views.generic import View
 
 class SigninView(View):
     template_name = "signin.html"
-    form_class = models.SigninForm
-
-    def get(self, request):
-        form = self.form_class()
-        message = ""
-        return render(
-            request, self.template_name, context={
-                "form": form, "message": message}
-        )
+    signin_form_model = models.SigninForm
 
     def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
+        signin_form = self.signin_form_model(request.POST)
+        if signin_form.is_valid():  # if the fields are valid
             user = authenticate(
-                username=form.cleaned_data["username"],
-                password=form.cleaned_data["password"],
+                username=signin_form.cleaned_data["username"],
+                password=signin_form.cleaned_data["password"],
             )
-            if user is not None:
+            if user is not None:  # if a user is found
                 login(request, user)
                 return redirect("home")
-        message = "Identifiants invalides."
+            else:
+                message = 'Identifiants invalides.'
         return render(
-            request, self.template_name, context={
-                "form": form, "message": message}
+            request, "home.html", context={
+                "signin_form": signin_form, 'message': message, 'page_css': 'home.css'}
         )
 
 
