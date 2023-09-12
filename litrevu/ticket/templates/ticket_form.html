@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Créer un ticket</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ ticket_form }}
+  <div class="submit-div">
+    <button type="submit" class="btn-primary">Envoyer</button>
+  </div>
+</form>
+{% endblock content %}

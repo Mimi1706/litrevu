@@ -13,7 +13,20 @@
 
     <title>Litrevu</title>
   </head>
+
   <body>
-    {% block content %}{% endblock content %}
+    {%  if user.is_authenticated %}
+    <header>
+      <h1>LitRevu</h1>
+      <ul>
+        <li>Flux</li>
+        <li>Posts</li>
+        <li>Abonnements</li>
+        <li>Se déconnecter</li>
+      </ul>
+    </header>
+    {% endif %}
+
+    <main>{% block content %}{% endblock content %}</main>
   </body>
 </html>
