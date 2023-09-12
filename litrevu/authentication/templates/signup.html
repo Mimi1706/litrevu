@@ -6,6 +6,6 @@
 {% if form.errors %} {{ form.errors }} {% endif %}
 <form method="post">
   {{ form.as_p }} {% csrf_token %}
-  <button type="submit" class="signup-button">S’inscrire</button>
+  <button type="submit" class="btn-primary">S’inscrire</button>
 </form>
 {% endblock content %}
