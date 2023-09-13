@@ -1,3 +1,23 @@
 {% extends 'base.html' %} {% block content %}
-<div>Feed</div>
-{% endblock content %}
+<h1>Flux</h1>
+
+<div class="feed-btn">
+  <a class="btn-primary" href="{% url 'ticket' %}">Demander une critique</a>
+  <a class="btn-primary" href="{% url 'review' %}">Créer une critique</a>
+</div>
+
+<div class="all_tickets_reviews">
+  {% for item in all_tickets_reviews %} {% if item.headline %}
+  <!-- Review -->
+  <div class="review card">
+    <h3>{{ item.headline }}</h3>
+    <p>{{ item.body }}</p>
+  </div>
+  {% else %}
+  <!-- Ticket -->
+  <div class="ticket card">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+  </div>
+  {% endif %} {% endfor %} {% endblock content %}
+</div>

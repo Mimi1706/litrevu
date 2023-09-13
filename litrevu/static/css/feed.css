@@ -1,0 +1,16 @@
+.all_tickets_reviews {
+  width: 100%;
+}
+
+.feed-btn {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  border: 1px solid gray;
+  margin: 2em;
+  padding: 2em;
+}

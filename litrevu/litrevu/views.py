@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from authentication.models import SigninForm
+from ticket.models import Ticket
+from review.models import Review
 
 
 def home(request):
@@ -8,4 +10,9 @@ def home(request):
 
 
 def feed(request):
-    return render(request, "feed.html", context={'page_css': 'feed.css'})
+    tickets = list(Ticket.objects.all())
+    reviews = list(Review.objects.all())
+    all_tickets_reviews = tickets + reviews
+    sorted_by_most_recent = sorted(
+        all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
+    return render(request, "feed.html", context={'page_css': 'feed.css', 'all_tickets_reviews': sorted_by_most_recent})
