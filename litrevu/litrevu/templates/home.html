@@ -1,10 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Litrevu</h1>
 {%  if user.is_authenticated %}
-<p>
-  Vous êtes connecté en tant que {{ request.user }}.
-  <a href="{% url 'signout' %}">Se déconnecter</a>
-</p>
+<div>Hello</div>
 {% endif %} {%  if not user.is_authenticated %}
 
 <section class="authentication-section">

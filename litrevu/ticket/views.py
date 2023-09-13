@@ -1,15 +1,20 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import TicketForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 # Create your views here.
 
 
+@login_required  # This decorator makes sure only logged user can create a ticket
 def create_ticket(request):
     if request.method == 'POST':
-        form = TicketForm(request.POST, request.FILES)
+        form = TicketForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('some_view_name')
+            ticket = form.save(commit=False)  # Not immediately saving the form
+            ticket.user = request.user  # Set the user from the request
+            ticket.save()
+            return redirect('feed')
     else:
         ticket_form = TicketForm()
-    return render(request, 'ticket_form.html', {'ticket_form': ticket_form, "page_css": "ticket_form.css"})
+    return render(request, 'ticket.html', {'ticket_form': ticket_form, "page_css": "form.css"})

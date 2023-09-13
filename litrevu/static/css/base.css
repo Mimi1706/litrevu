@@ -19,7 +19,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 1em;
   flex-wrap: wrap;
   border-bottom: 1px solid lightgrey;
@@ -34,12 +33,16 @@ header ul {
   display: flex;
   align-items: center;
   list-style: none;
-  justify-content: space-between;
 }
 
-header ul li {
+header ul li a {
   text-decoration: none;
   margin: 0 1em;
+  color: black;
+}
+
+header ul li a:hover {
+  text-decoration: underline;
 }
 
 main {
@@ -64,4 +67,25 @@ main {
 .btn-primary:hover {
   background-color: rgb(239, 239, 239);
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  header h1 {
+    width: 100%;
+    margin-top: 0.5em;
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  header ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-left: -2em;
+  }
+
+  header ul li a {
+    margin: 0 0.5em;
+  }
 }

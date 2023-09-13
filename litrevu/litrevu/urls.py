@@ -19,6 +19,8 @@ from django.urls import path
 import authentication.views
 import litrevu.views
 import ticket.views
+import review.views
+
 
 urlpatterns = [
     path("", litrevu.views.home, name="home"),
@@ -26,5 +28,8 @@ urlpatterns = [
     path("signin/", authentication.views.SigninView.as_view(), name="signin"),
     path("signup/", authentication.views.render_signup_page, name="signup"),
     path("signout/", authentication.views.signout_user, name="signout"),
+    path("feed/", litrevu.views.feed, name="feed"),
     path("ticket/", ticket.views.create_ticket, name="ticket"),
+    path("review/", review.views.create_review, name="review"),
+
 ]
