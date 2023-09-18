@@ -1,10 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% load stars_rating %}
-<h1>Flux</h1>
-
-<div class="feed-btn">
-  <a class="btn-primary" href="{% url 'ticket' %}">Demander une critique</a>
-  <a class="btn-primary" href="{% url 'review' %}">Créer une critique</a>
-</div>
+<h1>Vos posts</h1>
 
 <div class="all_tickets_reviews">
   {% for item in all_tickets_reviews %} {% if item.headline %}
@@ -32,6 +27,10 @@
       <div class="card-ticket-image">
         <img src="/media/{{item.ticket.image}}" alt="{{item.ticket.title}}" />
       </div>
+    </div>
+    <div class="card-btns">
+      <button class="btn-primary">Modifier</button>
+      <button class="btn-primary">Supprimer</button>
     </div>
   </div>
   {% else %}

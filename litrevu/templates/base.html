@@ -17,10 +17,10 @@
   <body>
     {%  if user.is_authenticated %}
     <header>
-      <h1>LitRevu</h1>
+      <a href="{% url 'home' %}"><h1>LitRevu</h1></a>
       <ul>
         <li><a href="{% url 'feed' %}">Flux</a></li>
-        <li><a href="{% url 'home' %}">Posts</a></li>
+        <li><a href="{% url 'posts' %}">Posts</a></li>
         <li><a href="{% url 'home' %}">Abonnements</a></li>
         <li><a href="{% url 'signout' %}">Se déconnecter</a></li>
       </ul>
