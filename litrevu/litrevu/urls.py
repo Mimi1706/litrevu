@@ -20,7 +20,8 @@ import authentication.views
 import litrevu.views
 import ticket.views
 import review.views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", litrevu.views.home, name="home"),
@@ -29,7 +30,13 @@ urlpatterns = [
     path("signup/", authentication.views.render_signup_page, name="signup"),
     path("signout/", authentication.views.signout_user, name="signout"),
     path("feed/", litrevu.views.feed, name="feed"),
+    path("posts/", litrevu.views.posts, name="posts"),
     path("ticket/", ticket.views.create_ticket, name="ticket"),
     path("review/", review.views.create_review, name="review"),
-
 ]
+
+
+# Only works in debug mode to display medias
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
