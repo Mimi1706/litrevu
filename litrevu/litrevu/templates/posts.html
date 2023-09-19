@@ -20,7 +20,8 @@
 
     <div class="inside-card card-ticket">
       <div class="card-ticket-infos">
-        <h3>{{ item.ticket.title }} - {{item.user}}</h3>
+        <p class="card-ticket-infos-user">Ticket par {{item.user}}</p>
+        <h3>{{ item.ticket.title }}</h3>
         <p>{{ item.ticket.description }}</p>
       </div>
 
@@ -28,18 +29,48 @@
         <img src="/media/{{item.ticket.image}}" alt="{{item.ticket.title}}" />
       </div>
     </div>
+
     <div class="card-btns">
-      <button class="btn-primary">Modifier</button>
-      <button class="btn-primary">Supprimer</button>
+      <form method="post" action="{% url 'edit_review' item.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-primary">Modifier</button>
+      </form>
+      <form method="post" action="{% url 'delete_review' item.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-primary">Supprimer</button>
+      </form>
     </div>
   </div>
+
   {% else %}
+
   <!-- Ticket -->
   <div class="card">
-    <p>Vous avez publié une critique</p>
-    <div class="inside-card">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
+    <div class="card-infos">
+      <p>Vous avez publié une critique</p>
+      <p>{{item.time_created}}</p>
+    </div>
+
+    <div class="inside-card card-ticket">
+      <div class="card-ticket-infos">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+
+      <div class="card-ticket-image">
+        <img src="/media/{{item.image}}" alt="{{item.title}}" />
+      </div>
+    </div>
+
+    <div class="card-btns">
+      <form method="post" action="{% url 'edit_ticket' item.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-primary">Modifier</button>
+      </form>
+      <form method="post" action="{% url 'delete_ticket' item.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-primary">Supprimer</button>
+      </form>
     </div>
   </div>
   {% endif %} {% endfor %} {% endblock content %}

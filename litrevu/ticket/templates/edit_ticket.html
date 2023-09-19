@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Modifier votre ticket</h1>
+<form method="post">
+  {% csrf_token %} {{ edit_ticket }}
+  <div class="submit-div">
+    <button type="submit" class="btn-primary">Sauvegarder</button>
+  </div>
+</form>
+{% endblock content %}

@@ -22,7 +22,6 @@ def posts(request):
     tickets = list(Ticket.objects.filter(user=request.user.id))
     reviews = list(Review.objects.filter(user=request.user.id))
     all_tickets_reviews = tickets + reviews
-    print(reviews[0].ticket.image)
     sorted_by_most_recent = sorted(
         all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
     return render(request, "posts.html", context={'page_css': 'card.css', 'all_tickets_reviews': sorted_by_most_recent})

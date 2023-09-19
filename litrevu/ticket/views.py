@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .forms import TicketForm
+from .models import Ticket
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
+
 
 # Create your views here.
 
@@ -18,3 +20,30 @@ def create_ticket(request):
     else:
         ticket_form = TicketForm()
     return render(request, 'ticket.html', {'ticket_form': ticket_form, "page_css": "form.css"})
+
+
+@login_required
+def edit_ticket(request, ticket_id):
+    ticket = get_object_or_404(Ticket, id=ticket_id)
+    form = TicketForm(instance=ticket)
+
+    if request.method == 'POST' and 'edit_ticket' in request.POST:
+        form = TicketForm(request.POST, instance=ticket)
+        if form.is_valid():
+            form.save()
+        return redirect('posts')
+
+    return render(request, 'edit_ticket.html', {
+        'edit_ticket': form,
+        "page_css": "form.css"
+    },)
+
+
+@login_required
+def delete_ticket(request, ticket_id):
+    ticket = get_object_or_404(Ticket, id=ticket_id)
+
+    if request.method == 'POST':
+        ticket.delete()
+
+    return redirect('posts')

@@ -33,6 +33,14 @@ urlpatterns = [
     path("posts/", litrevu.views.posts, name="posts"),
     path("ticket/", ticket.views.create_ticket, name="ticket"),
     path("review/", review.views.create_review, name="review"),
+    path("ticket/<int:ticket_id>/edit",
+         ticket.views.edit_ticket, name='edit_ticket'),
+    path('ticket/<int:ticket_id>/delete/',
+         ticket.views.delete_ticket, name='delete_ticket'),
+    path("review/<int:review_id>/edit",
+         review.views.edit_review, name='edit_review'),
+    path('review/<int:review_id>/delete/',
+         review.views.delete_review, name='delete_review')
 ]
 
 
