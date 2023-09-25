@@ -11,7 +11,7 @@ from django.shortcuts import redirect, get_object_or_404
 @login_required  # This decorator makes sure only logged user can create a ticket
 def create_ticket(request):
     if request.method == 'POST':
-        form = TicketForm(request.POST)
+        form = TicketForm(request.POST, request.FILES)
         if form.is_valid():
             ticket = form.save(commit=False)  # Not immediately saving the form
             ticket.user = request.user  # Set the user from the request
@@ -28,7 +28,7 @@ def edit_ticket(request, ticket_id):
     form = TicketForm(instance=ticket)
 
     if request.method == 'POST' and 'edit_ticket' in request.POST:
-        form = TicketForm(request.POST, instance=ticket)
+        form = TicketForm(request.POST, request.FILES, instance=ticket)
         if form.is_valid():
             form.save()
         return redirect('posts')
