@@ -9,4 +9,4 @@ class ReviewForm(forms.ModelForm):
     # class meta will use the Review model to create a form
     class Meta:
         model = Review
-        fields = ['ticket', 'headline', 'body', 'rating']
+        fields = ['headline', 'body', 'rating']

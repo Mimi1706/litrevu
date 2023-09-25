@@ -23,3 +23,28 @@ textarea {
   resize: none;
   margin-bottom: 1em;
 }
+
+.associated-ticket {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid grey;
+  margin: 1em;
+}
+
+.associated-ticket p {
+  margin: 0;
+  padding: 0.5em 1em;
+  padding-bottom: 0;
+}
+
+.associated-ticket-body {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  margin: 1em 2em;
+}
+
+.associated-ticket-body img {
+  width: 5em;
+  padding: 1em;
+}

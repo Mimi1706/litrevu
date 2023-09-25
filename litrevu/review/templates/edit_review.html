@@ -1,7 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Modifier votre critique</h1>
-<form method="post">
-  {% csrf_token %} {{ edit_ticket }}
+
+<div class="associated-ticket">
+  <p>Vous êtes en train de poster en réponse à</p>
+  <div class="associated-ticket-body">
+    <p>{{ associated_ticket.user }} a demandé une critique</p>
+    <p>{{ associated_ticket.title }}</p>
+    <p>{{ associated_ticket.description }}</p>
+    {% if associated_ticket.image %}
+    <img
+      src="{{ associated_ticket.image.url }}"
+      alt="Image for {{ associated_ticket.title }}"
+    />
+    {% endif %}
+  </div>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ edit_review }}
   <div class="submit-div">
     <button type="submit" class="btn-primary">Sauvegarder</button>
   </div>
