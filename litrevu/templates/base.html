@@ -4,12 +4,14 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 
-    <!-- import css refering to the page name with |add:page_css -->
+    {% block styles %}
+    <!-- import css refering to the page name with |add:file_css -->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/'|add:page_css %}"
+      href="{% static 'css/'|add:file_css %}"
     />
+    {% endblock %}
 
     <title>Litrevu</title>
   </head>
@@ -21,7 +23,7 @@
       <ul>
         <li><a href="{% url 'feed' %}">Flux</a></li>
         <li><a href="{% url 'posts' %}">Posts</a></li>
-        <li><a href="{% url 'home' %}">Abonnements</a></li>
+        <li><a href="{% url 'follow' %}">Abonnements</a></li>
         <li><a href="{% url 'signout' %}">Se déconnecter</a></li>
       </ul>
     </header>

@@ -2,6 +2,19 @@
   width: 100%;
 }
 
+.profile_username {
+  color: blue;
+}
+
+.user_profile_infos {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 2em;
+  justify-content: space-between;
+}
+
 .feed-btn {
   display: flex;
   width: 100%;

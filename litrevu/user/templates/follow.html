@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>Abonnements</h2>
+{% for followed_users in following %}
+<div>{{ followed_users.followed_user.username }}</div>
+{% endfor %}
+
+<h2>Abonnés</h2>
+{% for user_followers in followers %}
+<div>{{ user_followers.user.username }}</div>
+{% endfor %} {% endblock content %}

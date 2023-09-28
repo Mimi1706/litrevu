@@ -20,23 +20,33 @@ import authentication.views
 import litrevu.views
 import ticket.views
 import review.views
+import user.views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path("", litrevu.views.home, name="home"),
     path('admin/', admin.site.urls),
+
     path("signin/", authentication.views.SigninView.as_view(), name="signin"),
     path("signup/", authentication.views.render_signup_page, name="signup"),
     path("signout/", authentication.views.signout_user, name="signout"),
+
     path("feed/", litrevu.views.feed, name="feed"),
     path("posts/", litrevu.views.posts, name="posts"),
+    path('profile/<int:user_id>/', user.views.profile, name='profile'),
+
+    path("follow/", user.views.follow, name="follow"),
+    path("follow/<int:user_id>/",
+         user.views.follow_user, name="follow_user"),
+
     path("ticket/", ticket.views.create_ticket, name="ticket"),
-    path("review/", review.views.create_review, name="review"),
     path("ticket/<int:ticket_id>/edit",
          ticket.views.edit_ticket, name='edit_ticket'),
     path('ticket/<int:ticket_id>/delete/',
          ticket.views.delete_ticket, name='delete_ticket'),
+
+    path("review/", review.views.create_review, name="review"),
     path("review/<int:review_id>/edit",
          review.views.edit_review, name='edit_review'),
     path('review/<int:review_id>/delete/',

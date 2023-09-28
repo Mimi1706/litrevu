@@ -19,7 +19,7 @@ def create_review(request):
             return redirect('feed')
     else:
         review_form = ReviewForm()
-    return render(request, 'review.html', {'review_form': review_form, "page_css": "form.css"})
+    return render(request, 'review.html', {'review_form': review_form, "file_css": "form.css"})
 
 
 @login_required
@@ -37,7 +37,7 @@ def edit_review(request, review_id):
     return render(request, 'edit_review.html', {
         'edit_review': form,
         "associated_ticket": associated_ticket,
-        "page_css": "form.css"
+        "file_css": "form.css"
     },)
 
 

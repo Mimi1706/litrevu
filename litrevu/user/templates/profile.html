@@ -1,5 +1,10 @@
 {% extends 'base.html' %} {% block content %} {% load stars_rating %}
-<h1>Vos posts</h1>
+<div class="user_profile_infos">
+  <h1>{{user.username}}</h1>
+  <a class="btn-primary" href="{% url 'follow_user' user_id=user.id %}"
+    >S'abonner</a
+  >
+</div>
 
 <div class="all_tickets_reviews">
   {% for item in all_tickets_reviews %} {% if item.headline %}
@@ -36,17 +41,6 @@
         <img src="/media/{{item.ticket.image}}" alt="{{item.ticket.title}}" />
       </div>
     </div>
-
-    <div class="card-btns">
-      <form method="post" action="{% url 'edit_review' item.id %}">
-        {% csrf_token %}
-        <button type="submit" class="btn-primary">Modifier</button>
-      </form>
-      <form method="post" action="{% url 'delete_review' item.id %}">
-        {% csrf_token %}
-        <button type="submit" class="btn-primary">Supprimer</button>
-      </form>
-    </div>
   </div>
 
   {% else %}
@@ -74,17 +68,6 @@
       <div class="card-ticket-image">
         <img src="/media/{{item.image}}" alt="{{item.title}}" />
       </div>
-    </div>
-
-    <div class="card-btns">
-      <form method="post" action="{% url 'edit_ticket' item.id %}">
-        {% csrf_token %}
-        <button type="submit" class="btn-primary">Modifier</button>
-      </form>
-      <form method="post" action="{% url 'delete_ticket' item.id %}">
-        {% csrf_token %}
-        <button type="submit" class="btn-primary">Supprimer</button>
-      </form>
     </div>
   </div>
   {% endif %} {% endfor %} {% endblock content %}

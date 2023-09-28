@@ -22,7 +22,7 @@ class SigninView(View):
                 message = 'Identifiants invalides.'
         return render(
             request, "home.html", context={
-                "signin_form": signin_form, 'message': message, 'page_css': 'home.css'}
+                "signin_form": signin_form, 'message': message, 'file_css': 'home.css'}
         )
 
 
@@ -35,7 +35,7 @@ def render_signup_page(request):
             # auto-login user
             login(request, user)
             return redirect("home")
-    return render(request, "signup.html", context={"form": form, 'page_css': 'signup.css'})
+    return render(request, "signup.html", context={"form": form, 'file_css': 'signup.css'})
 
 
 def signout_user(request):

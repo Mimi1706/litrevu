@@ -6,7 +6,7 @@ from review.models import Review
 
 def home(request):
     signin_form = SigninForm()
-    return render(request, "home.html", context={'page_css': 'home.css', "signin_form": signin_form})
+    return render(request, "home.html", context={'file_css': 'home.css', "signin_form": signin_form})
 
 
 def feed(request):
@@ -15,7 +15,7 @@ def feed(request):
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
         all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
-    return render(request, "feed.html", context={'page_css': 'card.css', 'all_tickets_reviews': sorted_by_most_recent})
+    return render(request, "feed.html", context={'file_css': 'feed.css', 'all_tickets_reviews': sorted_by_most_recent})
 
 
 def posts(request):
@@ -24,4 +24,4 @@ def posts(request):
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
         all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
-    return render(request, "posts.html", context={'page_css': 'card.css', 'all_tickets_reviews': sorted_by_most_recent})
+    return render(request, "posts.html", context={'file_css': 'feed.css', 'all_tickets_reviews': sorted_by_most_recent})

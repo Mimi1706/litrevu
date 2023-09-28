@@ -11,7 +11,14 @@
   <!-- Review -->
   <div class="card">
     <div class="card-infos">
-      <p>Vous avez publié une critique</p>
+      <p>
+        <a
+          class="profile_username"
+          href="{% url 'profile' user_id=item.user.id %}"
+          >{{ item.user }}</a
+        >
+        a publié une critique
+      </p>
       <p>{{item.time_created}}</p>
     </div>
 
@@ -41,7 +48,14 @@
   <!-- Ticket -->
   <div class="card">
     <div class="card-infos">
-      <p>Vous avez publié un ticket</p>
+      <p>
+        <a
+          class="profile_username"
+          href="{% url 'profile' user_id=item.user.id %}"
+          >{{ item.user }}</a
+        >
+        a publié un ticket
+      </p>
       <p>{{item.time_created}}</p>
     </div>
 
