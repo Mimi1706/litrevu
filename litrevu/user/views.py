@@ -20,7 +20,6 @@ def follow(request):
     UserModel = get_user_model()
     user_id = request.user.id
     user = get_object_or_404(UserModel, id=user_id)
-
     following = user.following.all()  # Related name in models
     followers = user.followed_by.all()  # Related name in models
 
