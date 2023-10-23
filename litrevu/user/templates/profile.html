@@ -1,9 +1,12 @@
 {% extends 'base.html' %} {% block content %} {% load stars_rating %}
 <div class="user_profile_infos">
   <h1>{{user.username}}</h1>
-  <a class="btn-primary" href="{% url 'follow_user' user_id=user.id %}"
+  <!-- Hide follow button if it's the connected user's profile -->
+  {% if connected_user.id != user.id %}<a
+    class="btn-primary"
+    href="{% url 'follow_user' user_id=user.id %}"
     >S'abonner</a
-  >
+  >{% endif %}
 </div>
 
 <div class="all_tickets_reviews">

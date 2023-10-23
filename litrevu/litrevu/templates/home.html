@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% load stars_rating %}
 <h1>Accueil</h1>
-<p>Tous les derniers tickets et critiques publiés récemment.</p>
 {%  if user.is_authenticated %}
+<p>Tous les derniers tickets et critiques publiés récemment.</p>
 
 <div class="all_tickets_reviews">
   {% for item in all_tickets_reviews %} {% if item.headline %}
@@ -67,7 +67,9 @@
       </div>
     </div>
   </div>
-  {% endif %} {% endfor %}
+  {% endif %} {% empty %}
+  <div class="empty-message">Aucun ticket ou critique trouvé.</div>
+  {% endfor %}
 </div>
 
 {% endif %} {%  if not user.is_authenticated %}

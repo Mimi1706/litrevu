@@ -1,11 +1,51 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Abonnements</h2>
-{% for followed_users in following %}
-<div>{{ followed_users.followed_user.username }}</div>
-{% endfor %}
+<div class="followings">
+  <div class="user_search">
+    <label>Suivre d'autres utilisateurs</label>
+    {% if error_message %}
+    <p class="error_message">{{ error_message }}</p>
+    {% endif %} {% if success_message %}
+    <p class="success_message">{{ success_message }}</p>
+    {% endif %}
+    <form method="post" action="{% url 'find_user' %}">
+      {% csrf_token %}
+      <input placeholder="Nom d'utilisateur" name="username" />
+      <button type="submit">S'abonner</button>
+    </form>
+  </div>
 
-<h2>Abonnés</h2>
-{% for user_followers in followers %}
-<div>{{ user_followers.user.username }}</div>
-{% endfor %} {% endblock content %}
+  <h2>Abonnements</h2>
+  {% if followings %} {% for following in followings %}
+  <div class="user-card">
+    <a href="{% url 'profile' user_id=following.followed_user.id %}"
+      >{{ following.followed_user.username }}
+    </a>
+    <form
+      method="post"
+      action="{% url 'unfollow' user_id=following.followed_user.id %}"
+    >
+      {% csrf_token %}
+      <button type="submit" class="unfollow-btn">Se désabonner</button>
+    </form>
+  </div>
+  {% endfor %}{% else %}
+  <div>Vous n'avez actuellement pas d'abonnement.</div>
+  {% endif %}
+</div>
+
+<div class="followers">
+  <h2>Abonnés</h2>
+
+  {% if followers %} {% for follower in followers %}
+  <div class="user-card">
+    <a href="{% url 'profile' user_id=follower.user.id %}"
+      >{{ follower.user.username }}
+    </a>
+  </div>
+  {% endfor %} {% else %}
+  <div>Vous n'avez actuellement pas d'abonné.</div>
+  {% endif %}
+</div>
+
+{% endblock content %}

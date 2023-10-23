@@ -87,6 +87,8 @@
       </form>
     </div>
   </div>
-  {% endif %} {% endfor %}
+  {% endif %} {% empty %}
+  <div class="empty-message">Aucun ticket ou critique trouvé.</div>
+  {% endfor %}
 </div>
 {% endblock content %}

@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+.empty-message {
+  text-align: center;
+  margin: 3em;
+  font-size: 1.2em;
+}
+
 .profile_username {
   color: blue;
 }
@@ -10,6 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  align-items: center;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 2em;
   justify-content: space-between;

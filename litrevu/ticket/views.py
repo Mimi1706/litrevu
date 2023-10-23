@@ -19,7 +19,7 @@ def create_ticket(request):
             return redirect('feed')
     else:
         ticket_form = TicketForm()
-    return render(request, 'ticket.html', {'ticket_form': ticket_form, "file_css": "form.css"})
+    return render(request, 'ticket.html', {'ticket_form': ticket_form, "css_files": ["form.css"]})
 
 
 @login_required
@@ -35,7 +35,7 @@ def edit_ticket(request, ticket_id):
 
     return render(request, 'edit_ticket.html', {
         'edit_ticket': form,
-        "file_css": "form.css"
+        "css_files": ["form.css"]
     },)
 
 

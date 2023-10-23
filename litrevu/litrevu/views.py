@@ -11,7 +11,7 @@ def home(request):
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
         all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
-    return render(request, "home.html", context={'file_css': 'feed.css', "signin_form": signin_form, 'all_tickets_reviews': sorted_by_most_recent})
+    return render(request, "home.html", context={'css_files': ['feed.css', 'home.css'], "signin_form": signin_form, 'all_tickets_reviews': sorted_by_most_recent})
 
 
 def feed(request):
@@ -29,11 +29,21 @@ def feed(request):
     tickets = list(Ticket.objects.filter(user__in=combined_users))
     reviews = list(Review.objects.filter(user__in=combined_users))
 
+    # retrieve tickets and reviews of connected user
+    user_tickets = list(Ticket.objects.filter(user=request.user))
+    user_reviews = list(Review.objects.filter(user=request.user))
+    tickets.extend(user_tickets)
+    reviews.extend(user_reviews)
+
+    # retrieve the reviews made in response to a ticket the connected user opened
+    user_ticket_reviews = list(Review.objects.filter(ticket__in=user_tickets))
+    reviews.extend(user_ticket_reviews)
+
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
         all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
 
-    return render(request, "feed.html", context={'file_css': 'feed.css', 'all_tickets_reviews': sorted_by_most_recent})
+    return render(request, "feed.html", context={'css_files': ['feed.css'], 'all_tickets_reviews': sorted_by_most_recent})
 
 
 def posts(request):
@@ -42,4 +52,4 @@ def posts(request):
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
         all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
-    return render(request, "posts.html", context={'file_css': 'feed.css', 'all_tickets_reviews': sorted_by_most_recent})
+    return render(request, "posts.html", context={'css_files': ['feed.css'], 'all_tickets_reviews': sorted_by_most_recent})

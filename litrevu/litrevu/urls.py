@@ -37,8 +37,10 @@ urlpatterns = [
     path('profile/<int:user_id>/', user.views.profile, name='profile'),
 
     path("follow/", user.views.follow, name="follow"),
+    path('find-user/', user.views.find_user, name='find_user'),
     path("follow/<int:user_id>/",
          user.views.follow_user, name="follow_user"),
+    path('unfollow/<int:user_id>/', user.views.unfollow_user, name='unfollow'),
 
     path("ticket/", ticket.views.create_ticket, name="ticket"),
     path("ticket/<int:ticket_id>/edit",
