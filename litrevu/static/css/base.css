@@ -88,6 +88,11 @@ main {
   cursor: pointer;
 }
 
+.ticket-review-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media screen and (max-width: 600px) {
   header h1 {
     width: 100%;
@@ -106,5 +111,10 @@ main {
 
   header ul li a {
     margin: 0 0.5em;
+  }
+
+  .ticket-review-btn {
+    display: flex;
+    justify-content: center;
   }
 }

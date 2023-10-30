@@ -3,7 +3,7 @@
 
 <div class="feed-btn">
   <a class="btn-primary" href="{% url 'ticket' %}">Demander une critique</a>
-  <a class="btn-primary" href="{% url 'review' %}">Créer une critique</a>
+  <a class="btn-primary" href="{% url 'ticket-review'%}">Créer une critique</a>
 </div>
 
 <div class="all_tickets_reviews">
@@ -68,6 +68,10 @@
       <div class="card-ticket-image">
         <img src="/media/{{item.image}}" alt="{{item.title}}" />
       </div>
+    </div>
+
+    <div class="ticket-review-btn">
+      <button class="btn-primary">Créer une critique</button>
     </div>
   </div>
   {% endif %} {% endfor %}
