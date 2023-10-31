@@ -22,22 +22,32 @@ def create_review(request):
 
 
 @login_required  # This decorator makes sure only logged user can create a review
-def create_ticket_review(request):
+def create_ticket_and_review(request):
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
-        ticket_form = TicketForm(request.POST)
+        # request.files for the image upload
+        ticket_form = TicketForm(request.POST, request.FILES)
         if ticket_form.is_valid() and review_form.is_valid():
-            ticket = ticket_form.save()
-            # wait before saving the review
+            # Not immediately saving the form
+            ticket = ticket_form.save(commit=False)
+            ticket.user = request.user  # Set the user from the request
+            ticket.save()
+
             review = review_form.save(commit=False)
             review.ticket = ticket  # link the review to the ticket
+            review.user = request.user  # if the review model also has a user field
             review.save()
+
             return redirect('feed')
     else:
         ticket_form = TicketForm()
         review_form = ReviewForm()
-    return render(request, 'ticket-review.html', {'ticket_form': ticket_form,
-                                                  'review_form': review_form, "css_files": ["form.css"]})
+
+    return render(request, 'ticket-and-review.html', {
+        'ticket_form': ticket_form,
+        'review_form': review_form,
+        "css_files": ["form.css"]
+    })
 
 
 @login_required

@@ -88,7 +88,7 @@ main {
   cursor: pointer;
 }
 
-.ticket-review-btn {
+.ticket-and-review-btn {
   display: flex;
   justify-content: flex-end;
 }
@@ -113,7 +113,7 @@ main {
     margin: 0 0.5em;
   }
 
-  .ticket-review-btn {
+  .ticket-and-review-btn {
     display: flex;
     justify-content: center;
   }

@@ -48,8 +48,8 @@ urlpatterns = [
     path('ticket/<int:ticket_id>/delete/',
          ticket.views.delete_ticket, name='delete_ticket'),
 
-    path("review/create-ticket",
-         review.views.create_ticket_review, name="ticket-review"),
+    path("review/create-ticket-and-review",
+         review.views.create_ticket_and_review, name="ticket-and-review"),
 
     path("review/", review.views.create_review, name="review"),
     path("review/<int:review_id>/edit",

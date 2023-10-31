@@ -27,7 +27,7 @@ def edit_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     form = TicketForm(instance=ticket)
 
-    if request.method == 'POST' and 'edit_ticket' in request.POST:
+    if request.method == 'POST' and 'is_edit_ticket' in request.POST:
         form = TicketForm(request.POST, request.FILES, instance=ticket)
         if form.is_valid():
             form.save()
