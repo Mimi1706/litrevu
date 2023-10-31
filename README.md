@@ -10,9 +10,8 @@
 ## Installing and lauching
 
 1. Clone or download the content of [this repository](https://github.com/Mimi1706/litrevu)
-2. Create the environment for the project with `python -m venv env`
-3. Create your environment with `Python3 -m venv env` (the recommended name is env)
-4. Activate your environement with `source env/bin/activate`
-5. Install the dependencies for your environment with `pip3 install -r requirements.txt`
-6. Go to the project folder with `cd litrevu`
-7. Launch the project with `python3 manage.py runserver`
+2. Create your environment with `Python3 -m venv env` (the recommended name is env)
+3. Activate your environement with `source env/bin/activate`
+4. Install the dependencies for your environment with `pip3 install -r requirements.txt`
+5. Go to the project folder with `cd litrevu`
+6. Launch the project with `python3 manage.py runserver`
