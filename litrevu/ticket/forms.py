@@ -11,3 +11,7 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         fields = ['title', 'description', 'image']
+        labels = {
+            'title': 'Titre',
+            'description': 'Description',
+        }

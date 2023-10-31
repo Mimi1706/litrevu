@@ -7,10 +7,15 @@ class ReviewForm(forms.ModelForm):
     rating = forms.TypedChoiceField(
         choices=[(0, '0'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')],
         widget=forms.RadioSelect,
-        coerce=int
+        coerce=int,
+        label='Note'
     )
 
     # class meta will use the Review model to create a form
     class Meta:
         model = Review
         fields = ['headline', 'body', 'rating']
+        labels = {
+            'headline': 'Titre',
+            'body': 'Commentaire',
+        }
