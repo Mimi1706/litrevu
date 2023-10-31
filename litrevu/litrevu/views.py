@@ -24,20 +24,10 @@ def feed(request):
         relation.followed_user for relation in followed_relations]
     followers = [relation.user for relation in follower_relations]
 
-    # converted to list() to be able to be concanated and set() to get rid of duplicates
-    combined_users = list(set(followed_users + followers))
+    # converted to list() to be able to be concanated and set() to get rid of duplicates + including the connected user tickets and reviews
+    combined_users = list(set(followed_users + followers + [request.user]))
     tickets = list(Ticket.objects.filter(user__in=combined_users))
     reviews = list(Review.objects.filter(user__in=combined_users))
-
-    # retrieve tickets and reviews of connected user
-    user_tickets = list(Ticket.objects.filter(user=request.user))
-    user_reviews = list(Review.objects.filter(user=request.user))
-    tickets.extend(user_tickets)
-    reviews.extend(user_reviews)
-
-    # retrieve the reviews made in response to a ticket the connected user opened
-    user_ticket_reviews = list(Review.objects.filter(ticket__in=user_tickets))
-    reviews.extend(user_ticket_reviews)
 
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
