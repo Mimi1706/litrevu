@@ -39,9 +39,11 @@
         <p>{{ item.ticket.description }}</p>
       </div>
 
+      {% if item.ticket.image %}
       <div class="card-ticket-image">
-        <img src="/media/{{item.ticket.image}}" alt="{{item.ticket.title}}" />
+        <img src="/media/{{item.image}}" alt="{{item.title}}" />
       </div>
+      {% endif %}
     </div>
   </div>
 
@@ -67,9 +69,11 @@
         <p>{{ item.description }}</p>
       </div>
 
+      {% if item.image %}
       <div class="card-ticket-image">
         <img src="/media/{{item.image}}" alt="{{item.title}}" />
       </div>
+      {% endif %}
     </div>
 
     <div class="ticket-and-review-btn">
