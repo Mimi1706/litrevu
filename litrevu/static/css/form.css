@@ -48,3 +48,13 @@ textarea {
   width: 5em;
   padding: 1em;
 }
+
+#id_rating {
+  display: flex;
+}
+
+#id_rating label {
+  margin: 1em;
+  display: flex;
+  align-items: center;
+}
