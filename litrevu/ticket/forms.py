@@ -10,8 +10,8 @@ class TicketForm(forms.ModelForm):
     # class meta will use the Ticket model to create a form
     class Meta:
         model = Ticket
-        fields = ['title', 'description', 'image']
+        fields = ["title", "description", "image"]
         labels = {
-            'title': 'Titre',
-            'description': 'Description',
+            "title": "Titre",
+            "description": "Description",
         }

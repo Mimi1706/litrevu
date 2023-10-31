@@ -26,41 +26,43 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", litrevu.views.home, name="home"),
-    path('admin/', admin.site.urls),
-
+    path("admin/", admin.site.urls),
     path("signin/", authentication.views.SigninView.as_view(), name="signin"),
     path("signup/", authentication.views.render_signup_page, name="signup"),
     path("signout/", authentication.views.signout_user, name="signout"),
-
     path("feed/", litrevu.views.feed, name="feed"),
     path("posts/", litrevu.views.posts, name="posts"),
-    path('profile/<int:user_id>/', user.views.profile, name='profile'),
-
+    path("profile/<int:user_id>/", user.views.profile, name="profile"),
     path("follow/", user.views.follow, name="follow"),
-    path('find-user/', user.views.find_user, name='find_user'),
-    path("follow/<int:user_id>/",
-         user.views.follow_user, name="follow_user"),
-    path('unfollow/<int:user_id>/', user.views.unfollow_user, name='unfollow'),
-
+    path("find-user/", user.views.find_user, name="find_user"),
+    path("follow/<int:user_id>/", user.views.follow_user, name="follow_user"),
+    path("unfollow/<int:user_id>/", user.views.unfollow_user, name="unfollow"),
     path("ticket/", ticket.views.create_ticket, name="ticket"),
-    path("ticket/<int:ticket_id>/edit",
-         ticket.views.edit_ticket, name='edit_ticket'),
-    path('ticket/<int:ticket_id>/delete/',
-         ticket.views.delete_ticket, name='delete_ticket'),
-
-    path("review/create-ticket-and-review",
-         review.views.create_ticket_and_review, name="ticket-and-review"),
-
-    path("review/ticket-<int:ticket_id>/create",
-         review.views.create_review, name="review"),
-    path("review/<int:review_id>/edit",
-         review.views.edit_review, name='edit_review'),
-    path('review/<int:review_id>/delete/',
-         review.views.delete_review, name='delete_review')
+    path("ticket/<int:ticket_id>/edit", ticket.views.edit_ticket, name="edit_ticket"),
+    path(
+        "ticket/<int:ticket_id>/delete/",
+        ticket.views.delete_ticket,
+        name="delete_ticket",
+    ),
+    path(
+        "review/create-ticket-and-review",
+        review.views.create_ticket_and_review,
+        name="ticket-and-review",
+    ),
+    path(
+        "review/ticket-<int:ticket_id>/create",
+        review.views.create_review,
+        name="review",
+    ),
+    path("review/<int:review_id>/edit", review.views.edit_review, name="edit_review"),
+    path(
+        "review/<int:review_id>/delete/",
+        review.views.delete_review,
+        name="delete_review",
+    ),
 ]
 
 
 # Only works in debug mode to display medias
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

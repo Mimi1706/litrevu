@@ -10,8 +10,17 @@ def home(request):
     reviews = list(Review.objects.all())
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
-        all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
-    return render(request, "home.html", context={'css_files': ['feed.css', 'home.css'], "signin_form": signin_form, 'all_tickets_reviews': sorted_by_most_recent})
+        all_tickets_reviews, key=lambda x: x.time_created, reverse=True
+    )
+    return render(
+        request,
+        "home.html",
+        context={
+            "css_files": ["feed.css", "home.css"],
+            "signin_form": signin_form,
+            "all_tickets_reviews": sorted_by_most_recent,
+        },
+    )
 
 
 def feed(request):
@@ -20,8 +29,7 @@ def feed(request):
     follower_relations = request.user.followed_by.all()
 
     # retrieve all the user instances
-    followed_users = [
-        relation.followed_user for relation in followed_relations]
+    followed_users = [relation.followed_user for relation in followed_relations]
     followers = [relation.user for relation in follower_relations]
 
     # converted to list() to be able to be concanated and set() to get rid of duplicates + including the connected user tickets and reviews
@@ -31,9 +39,17 @@ def feed(request):
 
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
-        all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
+        all_tickets_reviews, key=lambda x: x.time_created, reverse=True
+    )
 
-    return render(request, "feed.html", context={'css_files': ['feed.css'], 'all_tickets_reviews': sorted_by_most_recent})
+    return render(
+        request,
+        "feed.html",
+        context={
+            "css_files": ["feed.css"],
+            "all_tickets_reviews": sorted_by_most_recent,
+        },
+    )
 
 
 def posts(request):
@@ -41,5 +57,13 @@ def posts(request):
     reviews = list(Review.objects.filter(user=request.user.id))
     all_tickets_reviews = tickets + reviews
     sorted_by_most_recent = sorted(
-        all_tickets_reviews, key=lambda x: x.time_created, reverse=True)
-    return render(request, "posts.html", context={'css_files': ['feed.css'], 'all_tickets_reviews': sorted_by_most_recent})
+        all_tickets_reviews, key=lambda x: x.time_created, reverse=True
+    )
+    return render(
+        request,
+        "posts.html",
+        context={
+            "css_files": ["feed.css"],
+            "all_tickets_reviews": sorted_by_most_recent,
+        },
+    )
