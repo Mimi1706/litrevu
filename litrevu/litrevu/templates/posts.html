@@ -32,9 +32,9 @@
         <p>{{ item.ticket.description }}</p>
       </div>
 
-      {% if item.image %}
+      {% if item.ticket.image %}
       <div class="card-ticket-image">
-        <img src="/media/{{item.image}}" alt="{{item.title}}" />
+        <img src="/media/{{item.ticket.image}}" alt="{{item.ticket.title}}" />
       </div>
       {% endif %}
     </div>
@@ -74,7 +74,7 @@
       </div>
 
       {% if item.image %}
-      <div class="card-image">
+      <div class="card-ticket-image">
         <img src="/media/{{item.image}}" alt="{{item.title}}" />
       </div>
       {% endif %}

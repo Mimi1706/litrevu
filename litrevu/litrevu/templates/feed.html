@@ -10,6 +10,7 @@
 
 <div class="all_tickets_reviews">
   {% for item in all_tickets_reviews %} {% if item.headline %}
+
   <!-- Review -->
   <div class="card">
     <div class="card-infos">
@@ -41,7 +42,7 @@
 
       {% if item.ticket.image %}
       <div class="card-ticket-image">
-        <img src="/media/{{item.image}}" alt="{{item.title}}" />
+        <img src="/media/{{item.ticket.image}}" alt="{{item.ticket.title}}" />
       </div>
       {% endif %}
     </div>
@@ -77,7 +78,9 @@
     </div>
 
     <div class="ticket-and-review-btn">
-      <button class="btn-primary">Créer une critique</button>
+      <a class="btn-primary" href="{% url 'review' item.id %}"
+        >Créer une critique</a
+      >
     </div>
   </div>
   {% endif %} {% endfor %}
